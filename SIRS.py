@@ -8,6 +8,14 @@ import math
 
 class SIRS(object):
     def __init__(self, size, p_1, p_2, p_3):
+        """
+        initialising the SIRS model
+
+        :param size: size of 2d lattice as tuple
+        :param p_1: probability of S ---> I
+        :param p_2: probability of I ---> R
+        :param p_3: probability of R ---> S
+        """
         self.size = size
         self.p_1 = p_1
         self.p_2 = p_2
@@ -50,6 +58,16 @@ class SIRS(object):
             self.i_update(indices)
         elif self.lattice[indices] == -1:
             self.r_update(indices)
+
+    def infected_sites(self):
+        infected_sites = 0
+        for i in range(self.size[0]):
+            for j in range(self.size[1]):
+                if self.lattice[i, j] == 0:
+                    infected_sites += 1
+                else:
+                    infected_sites += 0
+        return infected_sites
 
     
    
