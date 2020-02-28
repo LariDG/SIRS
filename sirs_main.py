@@ -56,6 +56,8 @@ def main():
 
         plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
         plt.show()
+
+        np.savetxt(phase.txt, i_matrix)
             
 
         
