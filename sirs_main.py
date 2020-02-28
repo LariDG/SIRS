@@ -28,9 +28,9 @@ def main():
         game.run(iterations, 10000)
 
     if simulate == "N":
-        p_1_range = np.arange(0, 1, 0.1)
+        p_1_range = np.arange(0, 1, 0.025)
         p_2 = 0.5
-        p_3_range = np.arange(0, 1, 0.1)
+        p_3_range = np.arange(0, 1, 0.025)
         i_matrix = []
         i_matrix.append([0.0]*len(p_3_range))
         for n in range(1, len(p_1_range)):
