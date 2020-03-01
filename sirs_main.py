@@ -42,10 +42,10 @@ def main():
                 print(p_3)
                 game = SIRS(size, p_1, p_2, p_3)
                 infected = []
-                for i in range(22):
+                for i in range(1100):
                     for j in range(size[0]*size[1]):
                         game.update()
-                    if i > 2:
+                    if i > 100:
                         infected_sites = game.infected_sites()
                         print(infected_sites)
                         infected.append(infected_sites)
