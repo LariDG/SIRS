@@ -20,24 +20,23 @@ def main():
     size = (50, 50)
 
     if simulate == "Y":
-        p_1 = sys.argv[3]
-        p_2 = sys.argv[4]
-        p_3 = sys.argv[5]
-        iterations = sys.argv[6]
+        p_1 = 0.8
+        p_2 = 0.1
+        p_3 = 0.01
         game = SIRS(size, p_1, p_2, p_3)
-        game.run(iterations, 10000)
+        game.run(10000, 10000)
 
     if simulate == "N":
         p_1_range = np.arange(0, 1, 0.025)
         p_2 = 0.5
         p_3_range = np.arange(0, 1, 0.025)
         i_matrix = []
-        i_matrix.append([0.0]*len(p_3_range))
-        for n in range(1, len(p_1_range)):
+        i_matrix.append([0.0]*len(p_3_range), [0.0]*len(p_3_range), [0.0]*len(p_3_range), [0.0]*len(p_3_range))
+        for n in range(4, len(p_1_range)):
             p_1 = p_1_range[n]
             print(p_1)
-            i_avg_list = [0.0]
-            for m in range(1, len(p_3_range)):
+            i_avg_list = [0.0, 0.0, 0.0, 0.0]
+            for m in range(4, len(p_3_range)):
                 p_3 = p_3_range[m]
                 print(p_3)
                 game = SIRS(size, p_1, p_2, p_3)
