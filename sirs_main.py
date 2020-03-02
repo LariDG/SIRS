@@ -27,6 +27,7 @@ def main():
         game.run(10000, 10000)
 
     if simulate == "N":
+        plot = sys.argv[3]
         p_1_range = np.arange(0, 1, 0.025)
         p_2 = 0.5
         p_3_range = np.arange(0, 1, 0.025)
@@ -36,12 +37,11 @@ def main():
         i_matrix.append([0.0]*len(p_3_range))
         i_matrix.append([0.0]*len(p_3_range))
         i_matrix.append([0.0]*len(p_3_range))
-        i_matrix.append([0.0]*len(p_3_range))
         for n in range(5, len(p_1_range)):
             p_1 = p_1_range[n]
             print(p_1)
-            i_avg_list = [0.0, 0.0, 0.0, 0.0]
-            for m in range(4, len(p_3_range)):
+            i_avg_list = [0.0, 0.0, 0.0, 0.0, 0.0]
+            for m in range(5, len(p_3_range)):
                 p_3 = p_3_range[m]
                 print(p_3)
                 game = SIRS(size, p_1, p_2, p_3)
@@ -51,10 +51,14 @@ def main():
                         game.update()
                     if i > 100:
                         infected_sites = game.infected_sites()
-                        print(infected_sites)
                         infected.append(infected_sites)
-                infected_avg = np.mean(infected)/(size[0]*size[1])
-                i_avg_list.append(infected_avg)
+                
+                if plot == "PD":
+                    infected_avg = np.mean(infected)/(size[0]*size[1])
+                    i_avg_list.append(infected_avg)
+                elif plot == "waves":
+                    infected_variance = np.var(infected)/(size[0]*size[1])
+                    i_avg_list.append(infected_variance)
             i_matrix.append(i_avg_list)
         print(i_matrix)
 
@@ -64,13 +68,7 @@ def main():
         numpy_matrix = np.matrix(i_matrix)
         np.savetxt("phase.txt", numpy_matrix)
             
-
+                    
         
-        
-
-
-                        
-
-
 
 main()
