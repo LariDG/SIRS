@@ -79,7 +79,7 @@ def main():
         i_matrix = []
         for n in range(len(p_1_range)):
             p_1 = p_1_range[n]
-            i_variance_list = []
+            i_var_list = []
             for m in range(len(p_2_range)):
                 p_2 = p_2_range[m]
                 print(p_2)
