@@ -26,7 +26,7 @@ def main():
         game = SIRS(size, p_1, p_2, p_3)
         game.run(10000, 10000)
 
-    if simulate == "N":
+    elif simulate == "N":
         plot = sys.argv[3]
         p_1_range = np.arange(0, 1, 0.025)
         p_2 = 0.5
@@ -66,9 +66,41 @@ def main():
         plt.show()
 
         numpy_matrix = np.matrix(i_matrix)
-        np.savetxt("phase.txt", numpy_matrix)
+        if plot == "PD":
+            np.savetxt("phase.txt", numpy_matrix)
+        elif plot == "waves":
+            np.savetxt("waves.txt", numpy_matrix)
             
                     
-        
+    elif simulate == "M":
+        p_1_range = np.arange(0.2, 0.525, 0.025)
+        p_2_range = np.arange(0.2, 0.525, 0.025)
+        p_3 = 0.5
+        i_matrix = []
+        for n in range(len(p_1_range)):
+            p_1 = p_1_range[n]
+            i_variance_list = []
+            for m in range(len(p_2_range)):
+                p_2 = p_2_range[m]
+                print(p_2)
+                game = SIRS(size, p_1, p_2, p_3)
+                infected = [] 
+                for i in range(10100):
+                    for j in range(size[0]*size[1]):
+                        game.update()
+                    if i > 100:
+                        infected_sites = game.infected_sites()
+                        infected.append(infected_sites)                                                   
+                infected_variance = np.var(infected)/(size[0]*size[1])
+                i_var_list.append(infected_variance)
+            i_matrix.append(i_var_list)
+
+        plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
+        plt.show()
+
+        numpy_matrix = np.matrix(i_matrix)
+        np.savetxt("p_3_fixed_var.txt", numpy_matrix)
+
+
 
 main()
