@@ -95,8 +95,8 @@ def main():
                 i_var_list.append(infected_variance)
             i_matrix.append(i_var_list)
 
-        plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
-        plt.show()
+        #plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
+        #plt.show()
 
         numpy_matrix = np.matrix(i_matrix)
         np.savetxt("p_3_fixed_var.txt", numpy_matrix)
