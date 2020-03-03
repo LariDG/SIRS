@@ -28,9 +28,9 @@ def main():
 
     elif simulate == "N":
         plot = sys.argv[3]
-        p_1_range = np.arange(0, 1, 0.025)
+        p_1_range = np.arange(0, 1, 0.1)
         p_2 = 0.5
-        p_3_range = np.arange(0, 1, 0.025)
+        p_3_range = np.arange(0, 1, 0.1)
         i_matrix = []
         i_matrix.append([0.0]*len(p_3_range))
         i_matrix.append([0.0]*len(p_3_range))
