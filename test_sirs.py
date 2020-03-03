@@ -62,8 +62,8 @@ def main():
             i_matrix.append(i_avg_list)
         print(i_matrix)
 
-        plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
-        plt.show()
+        #plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
+        #plt.show()
 
         numpy_matrix = np.matrix(i_matrix)
         if plot == "PD":
