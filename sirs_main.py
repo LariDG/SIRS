@@ -74,16 +74,13 @@ def main():
                     
     elif simulate == "M":
         p_1_range = np.arange(0.2, 0.525, 0.025)
-        p_2_range = np.arange(0.2, 0.525, 0.025)
+        p_2_range = 0.5
         p_3 = 0.5
         i_matrix = []
         for n in range(len(p_1_range)):
             p_1 = p_1_range[n]
-            i_var_list = []
-            for m in range(len(p_2_range)):
-                p_2 = p_2_range[m]
-                print(p_2)
-                game = SIRS(size, p_1, p_2, p_3)
+            i_var_list = []            
+            game = SIRS(size, p_1, p_2, p_3)
                 infected = [] 
                 for i in range(10100):
                     for j in range(size[0]*size[1]):
