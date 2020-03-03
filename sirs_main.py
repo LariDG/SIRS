@@ -71,6 +71,7 @@ def main():
             
                     
     elif simulate == "M":
+        file_handle = open("p_3_var.txt", "w+")
         p_1_range = np.arange(0.2, 0.525, 0.025)
         p_2 = 0.5
         p_3 = 0.5
@@ -89,10 +90,10 @@ def main():
             infected_variance = np.var(infected)/(size[0]*size[1])
             i_var_list.append(infected_variance)
 
+            file_handle.write('%lf, %lf\n' % (p_1_range[n], i_var_list[n]))
         #plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
         #plt.show()
 
-        np.savetxt("p_3_fixed_var.txt", i_var_list)
 
 
 
