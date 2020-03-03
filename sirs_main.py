@@ -35,13 +35,11 @@ def main():
         i_matrix.append([0.0]*len(p_3_range))
         i_matrix.append([0.0]*len(p_3_range))
         i_matrix.append([0.0]*len(p_3_range))
-        i_matrix.append([0.0]*len(p_3_range))
-        i_matrix.append([0.0]*len(p_3_range))
-        for n in range(5, len(p_1_range)):
+        for n in range(4, len(p_1_range)):
             p_1 = p_1_range[n]
             print(p_1)
-            i_avg_list = [0.0, 0.0, 0.0, 0.0, 0.0]
-            for m in range(5, len(p_3_range)):
+            i_avg_list = [0.0, 0.0, 0.0]
+            for m in range(4, len(p_3_range)):
                 p_3 = p_3_range[m]
                 print(p_3)
                 game = SIRS(size, p_1, p_2, p_3)
@@ -90,13 +88,11 @@ def main():
                     infected.append(infected_sites)                                                   
             infected_variance = np.var(infected)/(size[0]*size[1])
             i_var_list.append(infected_variance)
-        i_matrix.append(i_var_list)
 
         #plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
         #plt.show()
 
-        numpy_matrix = np.matrix(i_matrix)
-        np.savetxt("p_3_fixed_var.txt", numpy_matrix)
+        np.savetxt("p_3_fixed_var.txt", i_var_list)
 
 
 
