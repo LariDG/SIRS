@@ -32,14 +32,11 @@ def main():
         p_2 = 0.5
         p_3_range = np.arange(0, 1, 0.025)
         i_matrix = []
-        i_matrix.append([0.0]*len(p_3_range))
-        i_matrix.append([0.0]*len(p_3_range))
-        i_matrix.append([0.0]*len(p_3_range))
-        for n in range(4, len(p_1_range)):
+        for n in range(len(p_1_range)):
             p_1 = p_1_range[n]
             print(p_1)
-            i_avg_list = [0.0, 0.0, 0.0]
-            for m in range(4, len(p_3_range)):
+            i_avg_list = []
+            for m in range(len(p_3_range)):
                 p_3 = p_3_range[m]
                 print(p_3)
                 game = SIRS(size, p_1, p_2, p_3)
