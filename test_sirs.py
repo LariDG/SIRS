@@ -73,8 +73,8 @@ def main():
             
                     
     elif simulate == "M":
-        p_1_range = np.arange(0.2, 0.525, 0.025)
-        p_2_range = np.arange(0.2, 0.525, 0.025)
+        p_1_range = np.arange(0.2, 0.525, 0.1)
+        p_2_range = np.arange(0.2, 0.525, 0.1)
         p_3 = 0.5
         i_matrix = []
         for n in range(len(p_1_range)):
