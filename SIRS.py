@@ -7,7 +7,7 @@ import math
 
 
 class SIRS(object):
-    def __init__(self, size, p_1, p_2, p_3):
+    def __init__(self, size, simulate, p_1, p_2, p_3, p_i):
         """
         initialising the SIRS model
 
@@ -17,13 +17,22 @@ class SIRS(object):
         :param p_3: probability of R ---> S
         """
         self.size = size
+        self.simulate = simulate
         self.p_1 = p_1
         self.p_2 = p_2
         self.p_3 = p_3
+        self.p_i = p_i
         self.build()
 
     def build(self):
-        self.lattice = np.random.choice(a=[-1,0,1], size=self.size)
+        if self.simulate == 'Y' or self.simulate == 'N' or self.simulate == 'strip':
+            self.lattice = np.random.choice(a=[-1,0,1], size=self.size)
+        
+        if self.simulate == 'immunity':
+            self.lattice = np.random.choice(a=[-1,0,1,2], size=self.size, p=[self.perc(),self.perc(),self.perc(),self.p_i])
+
+    def perc(self):
+        return((1.0-self.p_i)/3.0)
 
     def pbc(self, indices):
 
