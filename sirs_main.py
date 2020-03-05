@@ -72,6 +72,7 @@ def main():
         p_2 = 0.5
         p_3 = 0.5
         i_var_list = []
+        errors = []
         for n in range(len(p_1_range)):
             p_1 = p_1_range[n]
             print(p_1)       
@@ -85,10 +86,11 @@ def main():
                     infected.append(infected_sites)                                                   
             infected_variance = np.var(infected)/(size[0]*size[1])
             i_var_list.append(infected_variance)
+            errors.append(infected)
             print(i_var_list)
 
         with open("p_3_var.txt", "w+") as f:
-            f.writelines(map("{}, {}\n".format, p_1_range, i_var_list))
+            f.writelines(map("{}, {}, {}\n".format, p_1_range, i_var_list, errors))
 
 
 

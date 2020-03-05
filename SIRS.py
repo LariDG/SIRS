@@ -68,6 +68,15 @@ class SIRS(object):
                 else:
                     infected_sites += 0
         return infected_sites
+    
+    def bootstrap(self, list):
+        errors = []
+        for i in range(100):
+            data_point = []
+            for j in range(len(list)):
+                data_point.append(list[np.random.choice(len(mag))])
+            errors.append(np.var(data_point)/(self.size[0]*self.size[1]))
+        return math.sqrt(np.var(errors))
 
     
    
