@@ -30,7 +30,8 @@ def main():
         p_1_range = np.arange(0, 1, 0.025)
         p_2 = 0.5
         p_3_range = np.arange(0, 1, 0.025)
-        i_matrix = []
+        i_avg_matrix = []
+        i_var_matrix = []
         for n in range(len(p_1_range)):
             p_1 = p_1_range[n]
             print(p_1)
