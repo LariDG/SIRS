@@ -68,14 +68,13 @@ def main():
             
                     
     elif simulate == "M":
-        file_handle = open("p_3_var.txt", "w+")
         p_1_range = np.arange(0.2, 0.525, 0.025)
         p_2 = 0.5
         p_3 = 0.5
-        i_matrix = []
+        i_var_list = []
         for n in range(len(p_1_range)):
             p_1 = p_1_range[n]
-            i_var_list = []            
+            print(p_1)       
             game = SIRS(size, p_1, p_2, p_3)
             infected = [] 
             for i in range(10100):
@@ -86,10 +85,10 @@ def main():
                     infected.append(infected_sites)                                                   
             infected_variance = np.var(infected)/(size[0]*size[1])
             i_var_list.append(infected_variance)
+            print(i_var_list)
 
-            file_handle.write('%lf, %lf\n' % (p_1_range[n], i_var_list[n]))
-        #plt.imshow(i_matrix, cmap = 'hot', interpolation = 'nearest', extent = [0,1,1,0])
-        #plt.show()
+        with open("p_3_var.txt", "w+") as f:
+            f.writelines(map("{}, {}\n".format, p_1_range, i_var_list))
 
 
 
