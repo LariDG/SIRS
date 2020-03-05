@@ -68,7 +68,7 @@ def main():
             
                     
     elif simulate == "M":
-        p_1_range = np.arange(0.2, 0.525, 0.025)
+        p_1_range = np.arange(0.2, 0.525, 0.01)
         p_2 = 0.5
         p_3 = 0.5
         i_var_list = []
